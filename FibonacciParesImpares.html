@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Trabajo en clase</title>
+</head>
+
+<body>
+    <h1>Trabajo Fibonacci </h1>
+    <form>
+        <input type="text" id="valor" value="" placeholder="introduce un valor numerico">
+        <input type="submit" onclick="return parImpar()" value="Buscar Par/Impar">
+    </form>
+
+    <div id="resultado"></div>
+    <label fibonacci="primer">Primer: </label>
+    <input type="number" id="numeroInicial" name="primerNumero">
+    <br>
+    <label fibonacci="segundo">segundo: </label>
+    <input type="number" id="numeroFinal" name="segundoNumero">
+    <br>
+    <label fibonacci="maximo">Maximo: </label>
+    <input type="number" id="maximo" name="maximo">
+    <br>
+    <input type="button" id="btnGenerar" value="Generar">
+    <br>
+    <input type="button" id="btnCrear" value="Crear">
+    <br>
+    <input type="button" id="btnPares" value="Pares">
+    <br>
+    <input type="button" id="btnImpares" value="Impares">
+    <br>
+    Multiplo: <input type="number" id="multiplo" name="multiplo">
+    <input type="button" id="btnMultiplo" value="Calcular Multiplo">
+    <br>
+
+    <hr>
+    <table id="fibonacci1" border="2">
+        <tr>
+            <th>serie Fibonacci</th>
+        </tr>
+        <tbody id="serieFibonacci">
+
+        </tbody>
+    </table>
+    <table id="fibonacci2" border="2">
+        <thetrad>
+            <th></th>
+            </tr>
+            <tbody id="serieFibonacci1">
+            </tbody>
+    </table>
+    <table id="fibonacci3" border="2">
+        <tr>
+            <th></th>
+        </tr>
+        <tbody id="serieFibonacci2">
+        </tbody>
+    </table>
+    <table id="fibonacci4" border="2">
+        <tr>
+            <th></th>
+        </tr>
+        <tbody id="serieFibonacci3">
+        </tbody>
+    </table>
+</body>
+<script>
+    //Indicar si es Par o Impar el numero ingresado
+    function parImpar() {
+        var valor = parseInt(document.getElementById("valor").value);
+        var tipo = (valor % 2) ? "Impar" : "Par";
+        document.getElementById("resultado").innerHTML = "El numero " + valor + " es " + tipo;
+        return false;
+    }
+</script>
+<script>
+    var index = 0
+    var seriefibo = document.getElementById("serieFibonacci");
+    document.getElementById("btnGenerar").addEventListener("click", function mostrar() {
+        divFibo.style.display = "block"
+        if (index > serie.length - 1) {
+            return 0;
+        } else {
+            var fila = document.createElement("tr")
+            var fila1 = document.createElement("tr")
+            var fila2 = document.createElement("tr")
+            var columna = document.createElement("td")
+            var columna1 = document.createElement("td")
+            var columna2 = document.createElement("td")
+            columna.appendChild(document.createTextNode(serie[index]))
+            columna1.appendChild(document.createTextNode(serie[index + 1]))
+            columna2.appendChild(document.createTextNode(serie[index + 2]))
+            fila.appendChild(columna)
+            fila.appendChild(columna1)
+            fila.appendChild(columna2)
+            seriefibo.appendChild(fila)
+            seriefibo.appendChild(fila1)
+            seriefibo.appendChild(fila2)
+            index += 3
+            mostrar(index)
+        }
+    })
+</script>
+<script>
+    var serie = []
+    class solver {
+        constructor(primerNumero, segundoNumero, maximo) {
+            this.primerNumero = primerNumero;
+            this.segundoNumero = segundoNumero;
+            this.maximo = maximo;
+        }
+    }
+</script>
+<script>
+    document.getElementById("btnGenerar").addEventListener("click", function () {
+        var maximo1 = (document.getElementById("maximo").value);
+        var n1 = (document.getElementById("numeroInicial").value);
+        var n2 = (document.getElementById("numeroFinal").value);
+        serie.push(parseInt(n1), parseInt(n2))
+        function fibonacci(nu1, nu2) {
+            if (nu1 + nu2 > maximo1) {
+                return serie;
+            } else {
+                nuevoNumero = nu1 + nu2
+                serie.push(nuevoNumero)
+                return fibonacci(nu2, nuevoNumero)
+            }
+        }
+        console.log(fibonacci(serie[0], serie[1]))
+    })
+</script>
+<script>
+    document.getElementById("btnPares").addEventListener("click", function enseñar() {
+        par = []
+        divFibo1.style.display = "block"
+        divFibo.style.display = "none"
+        function pares(n) {
+            if (n % 2 === 0) {
+                par.push(n)
+            }
+        }
+        serie.forEach(pares)
+        var index = 0
+        var seriePares = document.getElementById("serieFibonacci1");
+        if (index === pares.length) {
+            return 0;
+        } else {
+
+            var seriePares = document.getElementById("serieFibonacci1");
+            function crearPares() {
+                var tr = document.createElement("tr");
+                var td = document.createElement("td");
+                td.appendChild(document.createTextNode(par));
+                tr.appendChild(td);
+                seriePares.appendChild(tr);
+            }
+        }
+        crearPares()
+    })
+</script>
+<script>
+    document.getElementById("btnImpares").addEventListener("click", function () {
+        impar = []
+        divFibo2.style.display = "block"
+        divFibo1.style.display = "none"
+        divFibo.style.display = "none"
+        function impares(k) {
+            if (k % 2 === 0) {
+            } else {
+                impar.push(k)
+            }
+        }
+        serie.forEach(impares)
+        var seriePares = document.getElementById("serieFibonacci2");
+        function crearTabla() {
+            var fila = document.createElement("tr");
+            var columna = document.createElement("td");
+            columna.appendChild(document.createTextNode(impar));
+            fila.appendChild(columna);
+            seriePares.appendChild(fila);
+        }
+        crearTabla()
+    })
+</script>
+<script>
+    document.getElementById("btnMultiplo").addEventListener("click", function () {
+        multiplo1 = []
+        divFibo3.style.display = "block"
+        divFibo2.style.display = "none"
+        divFibo1.style.display = "none"
+        divFibo.style.display = "none"
+        var multiplo2 = document.getElementById("multiplo")
+        function impares(j) {
+            if (j % multiplo2 === 0) {
+            } else {
+                multiplo1.push(j)
+            }
+        }
+        serie.forEach(impares)
+        var seriePar = document.getElementById("serieFibonacci4");
+        function crearPar() {
+            var tr = document.createElement("tr");
+            var td = document.createElement("td");
+            td.appendChild(document.createTextNode(par));
+            tr.appendChild(td);
+            seriePar.appendChild(tr);
+        }
+
+        crearPar()
+
+    })
+</script>
+<script>
+    //divisiones
+    var divFibo = document.getElementById("fibonacci1")
+    var divFibo1 = document.getElementById("fibonacci2")
+    var divFibo2 = document.getElementById("fibonacci3")
+    var divFibo3 = document.getElementById("fibonacci4")
+    //ocultar divisiones
+    divFibo.style.display = "none"
+    divFibo1.style.display = "none"
+    divFibo2.style.display = "none"
+    divFibo3.style.display = "none"
+</script>
+
+</html>
